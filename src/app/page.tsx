@@ -17,6 +17,7 @@ export default function Home() {
     queryKey: ["words"],
     queryFn: getWord,
     refetchInterval: canRefetchOnInterval ? 10000 : false,
+    refetchIntervalInBackground: true,
     staleTime: 5 * 60 * 1000,
   });
   const [words, setWords] = useState<Array<Word>>([]);
