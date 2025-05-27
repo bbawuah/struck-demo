@@ -36,11 +36,10 @@ interface Props {
 export const ForceGraph = (props: Props) => {
   const { width, height, data } = props;
 
-  console.log(width, height);
   return (
     <ForceGraph2D
-      width={600}
-      height={600}
+      width={width}
+      height={height}
       graphData={data}
       linkColor={() => "#FFF"}
     />

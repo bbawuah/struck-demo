@@ -36,9 +36,9 @@ export default function Home() {
     return <div>Something went wrong whilst loading word</div>;
   }
 
-  if (isLoading) {
-    return <Spinner />;
-  }
+  // if (isLoading) {
+  //   return <Spinner />;
+  // }
 
   console.log(height, width);
   return (
