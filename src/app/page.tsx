@@ -18,7 +18,7 @@ export default function Home() {
     queryFn: getWord,
     refetchInterval: canRefetchOnInterval ? 10000 : false,
     refetchIntervalInBackground: true,
-    staleTime: 5 * 60 * 1000,
+    staleTime: 10000,
   });
   const [words, setWords] = useState<Array<Word>>([]);
   const { isSuccess, reset, isError } = useAutoSaveWord(data);
