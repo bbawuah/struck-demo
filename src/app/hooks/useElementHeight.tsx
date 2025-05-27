@@ -10,8 +10,6 @@ export function useElementHeight(ref: React.RefObject<HTMLElement | null>) {
       const elementWidth = ref.current.offsetWidth;
       setHeight(elementHeight);
       setWidth(elementWidth);
-
-      console.log("elementHeight", elementHeight);
     }
   }, []);
 
