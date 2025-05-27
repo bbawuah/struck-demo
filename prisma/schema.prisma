@@ -18,6 +18,6 @@ datasource db {
 model Word {
   id    Int    @id @default(autoincrement())
   word  String
-  group String @unique
+  group String
   timestamp DateTime @default(now())
 }
