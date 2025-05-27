@@ -13,7 +13,7 @@ import { useToastTrigger } from "./hooks/useToastTrigger";
 export default function Home() {
   const [canRefetchOnInterval, setCanRefetchOnInterval] = useState(true);
 
-  const { data, error, isFetching, refetch } = useQuery<Word>({
+  const { data, error, isFetching, isLoading, refetch } = useQuery<Word>({
     queryKey: ["words"],
     queryFn: getWord,
     refetchInterval: canRefetchOnInterval ? 10000 : false,
@@ -34,6 +34,10 @@ export default function Home() {
 
   if (error) {
     return <div>Something went wrong whilst loading word</div>;
+  }
+
+  if (isLoading) {
+    return <Spinner />;
   }
 
   return (
