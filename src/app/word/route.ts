@@ -5,7 +5,7 @@ import { z } from "zod";
 import prisma from "../../lib/prisma";
 
 const client = new OpenAI({
-  apiKey: process.env.OPENAI_API_KEY,
+  apiKey: process.env.OPEN_AI_API_KEY,
 });
 
 const Word = z.object({

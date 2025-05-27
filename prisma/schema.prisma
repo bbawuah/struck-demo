@@ -9,7 +9,7 @@ generator client {
   output   = "../src/generated/prisma"
 }
 
-datasource mydb {
+datasource db {
   provider = "postgresql"
   url      = env("DATABASE_URL")
 }

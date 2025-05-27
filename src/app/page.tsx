@@ -7,6 +7,8 @@ import { ForceGraph } from "./components/Domain/ForceGraph/ForceGraph";
 import { useElementHeight } from "./hooks/useElementHeight";
 import { TGraphData, TLink, TNode, Word } from "./types";
 import { useAutoSaveWord } from "./hooks/useAutoSaveWord";
+import { toast, ToastContainer } from "react-toastify";
+import { useToastTrigger } from "./hooks/useToastTrigger";
 
 export default function Home() {
   const [canRefetchOnInterval, setCanRefetchOnInterval] = useState(true);
@@ -18,16 +20,20 @@ export default function Home() {
     staleTime: 5 * 60 * 1000,
   });
   const [words, setWords] = useState<Array<Word>>([]);
-  const { isPending, isSuccess } = useAutoSaveWord(data);
+  const { isSuccess, reset, isError } = useAutoSaveWord(data);
 
   const graphContainerRef = useRef<HTMLDivElement | null>(null);
   const { height, width } = useElementHeight(graphContainerRef);
 
-  console.log("isPending", isPending);
-  console.log("isSuccess", isSuccess);
+  useToastTrigger(isSuccess, "Saved this word!", () => {
+    reset();
+  });
+  useToastTrigger(isError, "Oops.. we couldn't save this word!", () => {
+    reset();
+  });
 
   if (error) {
-    return <div>Error: {error.message}</div>;
+    return <div>Something went wrong whilst loading word</div>;
   }
 
   return (
@@ -56,6 +62,7 @@ export default function Home() {
             </Button>
           </Flex>
         </Box>
+        <ToastContainer />
       </Container>
     </div>
   );
