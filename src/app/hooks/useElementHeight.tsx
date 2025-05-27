@@ -6,12 +6,15 @@ export function useElementHeight(ref: React.RefObject<HTMLElement | null>) {
 
   useEffect(() => {
     if (ref?.current) {
+      console.log("ref.current", ref.current);
       const elementHeight = ref.current.offsetHeight;
       const elementWidth = ref.current.offsetWidth;
       setHeight(elementHeight);
       setWidth(elementWidth);
+
+      console.log("elementHeight", elementHeight);
     }
-  }, []);
+  }, [ref]);
 
   return { height, width };
 }

@@ -18,7 +18,6 @@ export default function Home() {
     queryFn: getWord,
     refetchInterval: canRefetchOnInterval ? 10000 : false,
     refetchIntervalInBackground: true,
-    staleTime: 10000,
   });
   const [words, setWords] = useState<Array<Word>>([]);
   const { isSuccess, reset, isError } = useAutoSaveWord(data);
@@ -41,6 +40,7 @@ export default function Home() {
     return <Spinner />;
   }
 
+  console.log(height, width);
   return (
     <div>
       <div className="flex h-[75dvh]">
